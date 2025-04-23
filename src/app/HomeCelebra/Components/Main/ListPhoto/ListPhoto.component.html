@@ -1,1 +1,26 @@
-<p>ListPhoto works!</p>,
+<div class="list-photo-container">
+    <div class="list-text-photo">
+      <li>Fotos de Stock gratuitas</li>
+      <li 
+        class="menu-item dropdown-wrapper"
+        (mouseenter)="showStockModal = true" 
+        (mouseleave)="showStockModal = false"
+      >
+        <div class="dropdown-trigger">
+          <span>{{ selectedOption || 'Selecciona una opción' }}</span>
+          <img class="down-iconos" src="icons/down-arrow.svg" alt="">
+        </div>
+  
+        <!-- Modal dropdown -->
+        <div 
+          class="modal-hover"
+          [ngClass]="{ 'visible': showStockModal, 'hidden': !showStockModal }"
+        >
+          <ul class="dropdown-list">
+            <li (click)="selectOption('Value 1')">Value 1</li>
+            <li (click)="selectOption('Value 3')">Value 3</li>
+          </ul>
+        </div>
+      </li>
+    </div>
+  </div>
