@@ -3,7 +3,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'Main-Celebre-FiltrerPhoto',
-  imports: [CommonModule],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './FiltrerPhoto.component.html',
   styleUrl: './FiltrerPhoto.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
