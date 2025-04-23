@@ -1,10 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
-  imports: [],
+  selector: 'Home-Celebra-Navbar',
+  imports: [
+    CommonModule
+  ],
   templateUrl: './Navbar.component.html',
   styleUrl: './Navbar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavbarComponent { }
+export class NavbarComponent { 
+
+  showHomeModal = false;
+  showSettingsModal = false;
+
+}

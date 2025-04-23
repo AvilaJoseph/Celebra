@@ -1,1 +1,72 @@
-<p>Navbar works!</p>,
+<div class="navbar-container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <img src="favicon.ico" alt="Logo" class="logo" />
+      </div>
+      <ul class="navbar-menu">
+        <li 
+            class="menu-item"
+            (mouseenter)="showHomeModal = true" 
+            (mouseleave)="showHomeModal = false"
+        >
+            <a routerLink="/home">Home</a>
+            <img class="down-iconos" src="icons/down-arrow.svg" alt="">
+        
+            <!-- Modal tipo dropdown -->
+            <div 
+            class="modal-hover"
+            [ngClass]="{ 'visible': showHomeModal, 'hidden': !showHomeModal }"
+            >
+            <ul class="dropdown-list">
+                <li><a routerLink="/home/discover">Descubrir fotos</a></li>
+                <li><a routerLink="/home/trending">Lo más visitado</a></li>
+                <li><a routerLink="/home/challenges">Retos</a></li>
+                <li><a routerLink="/home/videos">Videos gratuitos</a></li>
+                <li><a routerLink="/home/blog">Blog de Pexels</a></li>
+            </ul>
+            </div>
+        </li>      
+        <li><a routerLink="/about">About</a></li>
+        <li 
+            class="menu-item"
+            (mouseenter)="showSettingsModal = true"
+            (mouseleave)="showSettingsModal = false"
+        >
+            <a class="centrar-icono">...</a>
+        
+            <div 
+            class="modal-hover modal-settings"
+            [ngClass]="{ 'visible': showSettingsModal, 'hidden': !showSettingsModal }"
+            >
+            <ul class="settings-list">
+                <li><a routerLink="/login">Iniciar sesión</a></li>
+                <li><a routerLink="/api">API de imagen y vídeo</a></li>
+                <li><a routerLink="/apps">Aplicaciones y complementos</a></li>
+                <li><a routerLink="/support">Centro de ayuda</a></li>
+                <li><a routerLink="/report">Denunciar contenido</a></li>
+                <li><a routerLink="/contributors">Colaboradores</a></li>
+                <li><a routerLink="/terms">Impressum y Condiciones</a></li>
+            </ul>
+        
+            <hr class="divider" />
+        
+            <div class="lang-option">
+                <img src="icons/spain-flag.svg" alt="Idioma" class="icon-flag">
+                <span>Cambiar idioma</span>
+            </div>
+        
+            <hr class="divider" />
+        
+            <div class="social-icons">
+                <img src="icons/instagram.svg" alt="Instagram">
+                <img src="icons/facebook.svg" alt="Facebook">
+                <img src="icons/pinterest.svg" alt="Pinterest">
+                <img src="icons/youtube.svg" alt="YouTube">
+                <img src="icons/tiktok.svg" alt="TikTok">
+            </div>
+            </div>
+        </li>
+              <li><a routerLink="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
