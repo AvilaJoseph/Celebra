@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class ListPhotoComponent {
 
   showStockModal = false;
-  selectedOption: string = '';
+  selectedOption: string = 'Tendencias';
 
   selectOption(option: string): void {
     this.selectedOption = option;
