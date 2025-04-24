@@ -1,1 +1,29 @@
-<p>CardPhoto works!</p>,
+<!-- CardPhoto.component.html -->
+<div 
+  class="item"
+  [ngClass]="itemSize"
+  [ngStyle]="{'background-color': backgroundColor}"
+  (mouseenter)="showStockModal = true"
+  (mouseleave)="showStockModal = false"
+>
+  <!-- Contenedor superior con las imágenes -->
+  <div class="top-right-icons" *ngIf="showStockModal">
+    <img src="assets/icon1.svg" alt="icono1">
+    <img src="assets/icon2.svg" alt="icono2">
+  </div>
+  
+  <!-- Contenido central -->
+  <div class="item-content">
+    {{ content }}
+  </div>
+  
+  <!-- Contenedor inferior con SVG y botón -->
+  <div class="bottom-bar" *ngIf="showStockModal">
+    <div>
+      <!-- <img src="icons/down-arrow.svg" style="width: 100px;" alt=""> -->
+    </div>
+    <div>
+      <button class="btn-download">Ver más</button>
+    </div>
+  </div>
+</div>

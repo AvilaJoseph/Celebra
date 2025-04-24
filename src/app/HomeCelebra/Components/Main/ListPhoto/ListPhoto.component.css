@@ -1,142 +1,29 @@
+/* ListPhoto.component.css */
 :host {
     display: block;
-}
-
-.grid-photo {
+  }
+  
+  .grid-photo {
     width: 100%;
     max-width: 1530px;
     margin: 30px auto;
-}
-
-.masonry {
+  }
+  
+  .masonry {
     display: grid;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     grid-auto-rows: 10px;
     gap: 20px;
-}
-
-.item {
-    background-color: #ffffff;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    transition: transform 0.3s, box-shadow 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-    color: #fff;
-    position: relative;
-}
-
-/* Estilo cuando el mouse está sobre la tarjeta */
-.item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Navbar estilo para top-right-icons */
-.top-right-icons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.item:hover .top-right-icons {
-    opacity: 1;
-    /* Aparece cuando el cursor está sobre la tarjeta */
-}
-
-/* Menubar estilo para bottom-bar */
-.bottom-bar {
-    position: absolute;
+  }
+  
+  .card-container {
     width: 100%;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    justify-content: space-between;
-    padding: 20px;
-    align-items: end;
-}
-
-.item:hover .bottom-bar {
-    opacity: 1;
-    /* Aparece cuando el cursor está sobre la tarjeta */
-}
-
-/* Tamaños y colores específicos */
-.item1 {grid-row: span 23;background-color: #ff6f61;}
-.item2 {grid-row: span 20;background-color: #6b5b95;}
-.item3 {grid-row: span 23;background-color: #88b04b;}
-
-.item4 {
-    grid-row: span 20;
-    background-color: #d65076;
-}
-
-.item5 {
-    grid-row: span 23;
-    background-color: #ffb347;
-}
-
-.item6 {
-    grid-row: span 23;
-    background-color: #45b8ac;
-}
-
-.item7 {
-    grid-row: span 20;
-    background-color: #e94b3c;
-}
-
-.item8 {
-    grid-row: span 23;
-    background-color: #6c5b7b;
-}
-
-.item9 {
-    grid-row: span 23;
-    background-color: #00a86b;
-}
-
-.item10 {
-    grid-row: span 9;
-    background-color: #b565a7;
-}
-
-.btn-download{
-    z-index: 0;
-    box-sizing: border-box;
-    width: max-content;
-    max-width: 100%;
-    height: 50px;
-    line-height: 1;
-    text-decoration: none;
-    white-space: nowrap;
-    vertical-align: top;
-    background: none;
-    border: 1px solid;
-    border-radius: 12px;
-    outline: none;
-    transition: background-color .1s, border ease-in-out, transform .1s, box-shadow 5ms, border-color .25s;
-    color: #fff;
-    background: #54ca84;
-    border-color: #54ca84;
-    padding: 0 20px;
-    font-weight: 600;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-/* Responsive */
-@media (max-width: 768px) {
+    height: 100%;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
     .masonry {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
-}
+  }

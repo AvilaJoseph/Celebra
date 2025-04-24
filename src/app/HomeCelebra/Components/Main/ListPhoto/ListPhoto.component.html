@@ -1,38 +1,17 @@
+<!-- ListPhoto.component.html -->
 <div class="grid-photo">
-    <div class="masonry">
-      <div 
-        (mouseenter)="showStockModal = true"
-        (mouseleave)="showStockModal = false"
-        class="item item1 normal-size"
-      >
-        <!-- Contenedor superior con las imágenes -->
-        <div class="top-right-icons" *ngIf="showStockModal">
-          <img src="assets/icon1.svg" alt="icono1">
-          <img src="assets/icon2.svg" alt="icono2">
-        </div>
-
-        <!-- Contenido central -->
-        <div class="item-content">
-          Elemento 1
-        </div>
-        <!-- Contenedor inferior con SVG y botón -->
-        <div class="bottom-bar" *ngIf="showStockModal">
-          <div>
-              <!-- <img src="icons/down-arrow.svg" style="width: 100px;" alt=""> -->
-          </div>
-          <div>
-              <button class="btn-download">Ver más</button>
-          </div>
-      </div>      
-      </div>
-      <div class="item item2 small-size">Elemento 2</div>
-      <div class="item item3 small-size">Elemento 3</div>
-      <div class="item item4 normal-size">Elemento 4</div>
-      <div class="item item5 normal-size">Elemento 5</div>
-      <div class="item item6 small-size">Elemento 6</div>
-      <div class="item item7 normal-size">Elemento 7</div>
-      <div class="item item8 small-size">Elemento 8</div>
-      <div class="item item9 normal-size">Elemento 9</div>
-      <div class="item item10 small-size">Elemento 10</div>
+  <div class="masonry">
+    <div 
+      *ngFor="let card of cards" 
+      class="card-container"
+      [ngStyle]="{'grid-row': card.gridRow}"
+    >
+      <app-card-photo
+        [itemNumber]="card.id"
+        [itemSize]="card.size"
+        [backgroundColor]="card.backgroundColor"
+        [content]="card.content"
+      ></app-card-photo>
     </div>
   </div>
+</div>
