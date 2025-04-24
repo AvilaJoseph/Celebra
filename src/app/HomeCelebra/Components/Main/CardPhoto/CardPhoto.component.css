@@ -19,6 +19,7 @@
   font-size: 1.2em;
   color: #fff;
   position: relative;
+  overflow: hidden; /* Para contener los efectos de animación */
 }
 
 /* Estilo cuando el mouse está sobre la tarjeta */
@@ -35,17 +36,28 @@
   display: flex;
   gap: 10px;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 
+/* Animación para los iconos superiores - CORREGIDO: ahora de derecha a izquierda */
 .item:hover .top-right-icons {
   opacity: 1;
-  /* Aparece cuando el cursor está sobre la tarjeta */
+  animation: slideInFromRight 0.5s ease-out;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Contenedor para cada icono */
 .icon-wrapper {
-  /* background-color: rgba(255, 255, 255, 0.8); */
   border-radius: 8px;
   width: 36px;
   height: 36px;
@@ -53,19 +65,39 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo del icono que aparece en hover - Desde la derecha */
+.icon-wrapper:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease;
+  z-index: 0;
+}
+
+.icon-wrapper:hover:before {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* Estilos para los iconos dentro del wrapper */
 .icon {
   width: 22px;
   height: 22px;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 /* Efecto hover solo para el wrapper, no para el icono */
 .icon-wrapper:hover {
-  background: rgba(0, 0, 0, .4);
   transform: scale(1.1);
 }
 
@@ -96,7 +128,6 @@
 
 .item:hover .bottom-bar {
   opacity: 1;
-  /* Aparece cuando el cursor está sobre la tarjeta */
 }
 
 .btn-container{
@@ -130,7 +161,7 @@
   font-family: 'Montserrat', 'Open Sans', 'Rubik', sans-serif;
   display: flex;
   align-items: center;
-  gap: 8px; /* Añadir espacio entre el ícono y el texto */
+  gap: 8px;
   cursor: pointer;
 }
 
