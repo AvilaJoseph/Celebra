@@ -8,8 +8,12 @@
 >
   <!-- Contenedor superior con las imágenes -->
   <div class="top-right-icons" *ngIf="showStockModal">
-    <img src="assets/icon1.svg" alt="icono1">
-    <img src="assets/icon2.svg" alt="icono2">
+    <div class="icon-wrapper">
+      <img class="icon icon-info" src="assets/icon1.svg" alt="icono1">
+    </div>
+    <div class="icon-wrapper">
+      <img class="icon icon-heart" src="icons/hearth.svg" alt="icono2">
+    </div>
   </div>
   
   <!-- Contenido central -->
@@ -25,7 +29,7 @@
     <div class="btn-container">
       <button class="btn-download">
         <div class="icon-download">
-          <img class="svg-icon" src="icons/download.svg" alt="">
+          <img class="svg-icon icon-download-svg" src="icons/download.svg" alt="">
         </div>
         Ver más
       </button>

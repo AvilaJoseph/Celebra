@@ -30,8 +30,8 @@
 /* Navbar estilo para top-right-icons */
 .top-right-icons {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   display: flex;
   gap: 10px;
   opacity: 0;
@@ -43,11 +43,46 @@
   /* Aparece cuando el cursor está sobre la tarjeta */
 }
 
+/* Contenedor para cada icono */
+.icon-wrapper {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Estilos para los iconos dentro del wrapper */
+.icon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s ease;
+}
+
+/* Efecto hover solo para el wrapper, no para el icono */
+.icon-wrapper:hover {
+  background: rgba(0, 0, 0, .4);
+  transform: scale(1.1);
+}
+
+/* Clases específicas para cada icono */
+.icon-info {
+  color: #3498db;
+}
+
+.icon-heart {
+  color: #e74c3c;
+}
+
 /* Menubar estilo para bottom-bar */
 .bottom-bar {
   position: absolute;
   width: 100%;
-  bottom: 10px;
+  bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -55,7 +90,7 @@
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 15px 10px 0px;
   align-items: end;
 }
 
@@ -117,6 +152,10 @@
   filter: brightness(0) invert(1);
 }
 
-.svg-icon path {
-  stroke: #fff; /* Cambia el color del SVG a blanco para mejor contraste */
+.icon-download-svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-download:hover .icon-download-svg {
+  transform: translateY(2px);
 }
