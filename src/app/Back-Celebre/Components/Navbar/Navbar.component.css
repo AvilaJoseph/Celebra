@@ -1,0 +1,324 @@
+:host {
+  display: block;
+}
+
+.navbar-container{
+  /* background-color: #f8f9fa; */
+  width: 100%;
+  height: 80px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  margin: 0 auto;
+  max-width: 1600px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-menu > li > a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Regular menu items */
+.navbar-menu li:not(.contact-button) {
+  margin: 0 10px;
+  padding: 12px 18px; /* Más grande el área clickable */
+  border-radius: 12px; /* Bordes más suaves */
+  transition: all 0.25s ease;
+}
+
+/* Hover effect only for regular menu items */
+.navbar-menu li:not(.contact-button):hover {
+  background-color: #4344476e;
+  /* box-shadow: 0 4px 8px rgba(238, 236, 236, 0.404);  */
+  cursor: pointer;
+}
+
+/* Specific styles for contact button */
+.contact-button {
+  margin: 0 10px;
+  color: #111827;
+}
+
+.iconos {
+  width: 12px;   /* o el tamaño que prefieras */
+  height: auto;
+  margin-left: 5px;  /* separa el ícono del texto */
+  vertical-align: middle;
+}
+
+.centrar-iconos {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;  /* opcional, da un espacio uniforme */
+  text-align: center;
+}
+
+
+.down-iconos {
+  width: 18px;   /* o el tamaño que prefieras */
+  height: auto;
+  margin-left: 5px;  /* separa el ícono del texto */
+  vertical-align: middle;
+}
+
+.menu-item:hover 
+.down-iconos {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+
+.menu-item {
+  position: relative;
+}
+
+.modal-hover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  top: 40px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+}
+
+.modal-hover.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-list li,
+.settings-list li {
+  padding: 10px 20px;
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-list li:hover {
+  background-color: #f8f8f8 !important;
+}
+
+.settings-list li:hover {
+  background-color: #f8f8f8 !important;
+}
+
+.dropdown-list li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings-list li {
+  padding: 10px 20px;
+}
+
+.settings-list li a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.divider {
+  margin: 10px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.lang-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.icon-flag {
+  width: 20px;
+  height: 14px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.social-icons img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.button {
+  background-color: #ffffff;
+  /* border: 1px solid rgb(209, 213, 219); */
+  border-radius: 0.5rem;
+  color: #111827 !important;
+  font-size: 0.91rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Removed hover effect for the button */
+.button:hover {
+  transform: scale(0.88);
+  background-color: rgba(243, 243, 243, 0.842) !important;
+}
+
+.button:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.1);
+  outline-offset: 2px;
+}
+
+.button:focus-visible {
+  box-shadow: none;
+}
+
+/* Estilos para el menú de acciones (iconos y perfil) */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #6B7280;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-button:hover {
+  background-color: rgba(229, 231, 235, 0.4);
+  color: #111827;
+}
+
+/* Notificación con badge */
+.notification {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #EF4444;
+  color: white;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Perfil de usuario */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 16px;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Estilos para los dropdowns */
+.menu-item {
+  position: relative;
+}
+
+.modal-hover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  top: 40px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 10px 0;
+  width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+}
+
+.modal-hover.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-list li {
+  margin: 0;
+  padding: 0;
+}

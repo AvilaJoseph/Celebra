@@ -1,0 +1,94 @@
+<div class="navbar-container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a routerLink="/">
+          <div class="logo-container">
+            <img src="favicon.ico" alt="">
+          </div>
+        </a>
+      </div>
+      <ul class="navbar-menu main-menu">
+        <li 
+          class="menu-item"
+          [class.active]="true"
+        >
+          <a routerLink="/account">My account</a>
+        </li>
+        <li 
+          class="menu-item"
+          (mouseenter)="showTransactionsModal = true" 
+          (mouseleave)="showTransactionsModal = false"
+        >
+          <a routerLink="/transactions">Transactions</a>
+          
+          <!-- Modal dropdown para transacciones (opcional) -->
+          <div 
+            class="modal-hover"
+            [ngClass]="{ 'visible': showTransactionsModal, 'hidden': !showTransactionsModal }"
+          >
+            <ul class="dropdown-list">
+              <li><a routerLink="/transactions/recent">Recent transactions</a></li>
+              <li><a routerLink="/transactions/pending">Pending</a></li>
+              <li><a routerLink="/transactions/search">Search</a></li>
+            </ul>
+          </div>
+        </li>
+        <li 
+          class="menu-item"
+          (mouseenter)="showCardsModal = true" 
+          (mouseleave)="showCardsModal = false"
+        >
+          <a routerLink="/cards">Cards</a>
+          
+          <!-- Modal dropdown para tarjetas (opcional) -->
+          <div 
+            class="modal-hover"
+            [ngClass]="{ 'visible': showCardsModal, 'hidden': !showCardsModal }"
+          >
+            <ul class="dropdown-list">
+              <li><a routerLink="/cards/manage">Manage cards</a></li>
+              <li><a routerLink="/cards/virtual">Virtual cards</a></li>
+              <li><a routerLink="/cards/apply">Apply for new card</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/offers">Offers</a>
+        </li>
+        <li class="menu-item">
+          <a routerLink="/investments">Investments</a>
+        </li>
+      </ul>
+      <div class="navbar-actions">
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </button>
+        <button class="icon-button notification">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+          </svg>
+          <span class="notification-badge">1</span>
+        </button>
+        <div class="user-profile">
+          <span class="user-name">Dorothy Watkins</span>
+          <button class="icon-button logout">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
