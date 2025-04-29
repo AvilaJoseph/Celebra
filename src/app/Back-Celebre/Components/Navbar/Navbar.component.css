@@ -16,7 +16,7 @@
   height: 60px;
   width: 100%;
   padding-left: 30px;
-  border-bottom: 1px solid #C8CBD9;
+  border-bottom: 1px solid #c8c9ce7c;
 }
 
 .header-logo{
@@ -36,7 +36,7 @@
 
 .header-text h1 {
   font-size: 0.8rem;
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   color: #5A6ACF;
 }
 
@@ -86,18 +86,17 @@
   transition: all 0.2s ease;
   border-radius: 8px;
   margin: 0;
+  font-weight: 500 !important;
 }
 
 .sidebar-item.active a {
-  background-color: #707FDD;
-  color: #ffffff;
-  font-weight: 500;
+  background-color: #E4E6F4;
+  color: #5A6ACF;
 }
 
 .sidebar-item:hover a {
-  background-color: #707FDD;
-  color: #ffffff;
-  font-weight: 500;
+  background-color: #E4E6F4;
+  color: #5A6ACF;
 }
 
 .sidebar-icon {
@@ -123,4 +122,5 @@
 
 .sidebar-item:hover .sidebar-icon {
   opacity: 0.9;
+  color: #5A6ACF;
 }
