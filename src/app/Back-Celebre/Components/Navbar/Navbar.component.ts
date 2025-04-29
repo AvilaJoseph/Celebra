@@ -13,8 +13,5 @@ import { RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  showHomeModal = false;
-  showTransactionsModal = false;
-  showCardsModal = false;
-  showSettingsModal = false;
+
  }
