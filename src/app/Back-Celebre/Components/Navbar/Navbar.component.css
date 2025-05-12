@@ -2,68 +2,70 @@
 .sidebar-container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 280px;
   height: 100vh;
-  background-color: #F1F2F7;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  position: relative;
+  margin: 20px;
+  border-radius: 25px;
 }
 
-.header-container{
+.header-container {
   display: flex;
   justify-content: left;
   align-items: center;
-  padding: 15px;
-  background-color: #F1F2F7;
-  height: 60px;
+  padding: 20px;
+  background-color: #1a1a1a;
+  height: 70px;
   width: 100%;
-  padding-left: 30px;
-  border-bottom: 1px solid #c8c9ce7c;
+  border-radius: 25px;
+  /* border-bottom: 1px solid #333; */
 }
 
-.header-logo{
+.header-logo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.header-logo img{
-  width: 30px;
-  height: 30px;
+.header-logo img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
 }
 
-.header-text{
-  margin-left: 10px;
-}
-
-.header-text h1 {
-  font-size: 0.8rem;
-  font-weight: 400 !important;
-  color: #5A6ACF;
+.header-text {
+  margin-left: 12px;
 }
 
 .header-text h1 {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
 .container {
-  padding: 5px 15px;
+  padding: 20px;
   overflow-y: auto;
+  flex: 1;
 }
 
 .sidebar-section {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .section-title {
   font-size: 11px;
   font-weight: 500;
-  color: #677390;
-  padding: 0 15px;
-  margin-bottom: 8px;
-  margin-top: 15px;
+  color: #666666;
+  padding: 0 20px;
+  margin-bottom: 12px;
+  margin-top: 25px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .sidebar-menu {
@@ -73,30 +75,31 @@
 }
 
 .sidebar-item {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .sidebar-item a {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
-  color: #5a6578;
+  padding: 12px 20px;
+  color: #ffffff;
   text-decoration: none;
   font-size: 14px;
   transition: all 0.2s ease;
   border-radius: 8px;
-  margin: 0;
-  font-weight: 500 !important;
+  margin: 0 12px;
+  font-weight: 500;
+  position: relative;
 }
 
 .sidebar-item.active a {
-  background-color: #E4E6F4;
-  color: #5A6ACF;
+  background-color: #333333;
+  color: #ffffff;
 }
 
 .sidebar-item:hover a {
-  background-color: #E4E6F4;
-  color: #5A6ACF;
+  background-color: #2d2d2d;
+  color: #ffffff;
 }
 
 .sidebar-icon {
@@ -106,8 +109,8 @@
   width: 20px;
   height: 20px;
   margin-right: 12px;
-  opacity: 0.75;
-  color: #5a6578;
+  opacity: 0.7;
+  color: #ffffff;
 }
 
 .sidebar-icon svg {
@@ -117,10 +120,39 @@
 
 .sidebar-item.active .sidebar-icon {
   opacity: 1;
-  color: #5A6ACF;
+  color: #ffffff;
 }
 
 .sidebar-item:hover .sidebar-icon {
-  opacity: 0.9;
-  color: #5A6ACF;
+  opacity: 1;
+  color: #ffffff;
+}
+
+/* Additional styles for better visual appearance */
+.sidebar-container::before {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  /* background-color: #333; */
+}
+
+/* Scrollbar styling for dark theme */
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
