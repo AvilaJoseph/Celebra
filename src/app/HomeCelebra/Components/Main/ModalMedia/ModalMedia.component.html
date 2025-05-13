@@ -1,0 +1,9 @@
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <button class="close-button" (click)="close()">X</button>
+    <div class="modal-body">
+      <h2>{{ item?.name }}</h2>
+      <p>{{ item?.description }}</p>
+    </div>
+  </div>
+</div>
