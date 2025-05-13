@@ -12,10 +12,9 @@ import { ModalMediaComponent } from '../ModalMedia/ModalMedia.component';
   ],
   templateUrl: './CardPhoto.component.html',
   styleUrl: './CardPhoto.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardPhotoComponent {
-    @Input() itemNumber: number = 0;
+  @Input() itemNumber: number = 0;
   @Input() itemSize: string = 'normal-size';
   @Input() backgroundColor: string = '#ffffff';
   @Input() content: string = '';

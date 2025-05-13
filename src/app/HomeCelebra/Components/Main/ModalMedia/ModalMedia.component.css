@@ -8,21 +8,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.575);
   z-index: 1000;
 }
 
 .modal-content {
   position: absolute;
-  top: 50%;
+  top: 5vh;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  min-width: 400px;
-  max-width: 90vw;
+  width: calc(85vw - 20vh);
+  height: calc(100vh - 10vh);
+  overflow-y: auto;
 }
 
 .close-button {
