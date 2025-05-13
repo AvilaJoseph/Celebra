@@ -4,4 +4,6 @@ export interface Comment {
   avatar: string;
   text: string;
   date: string;
+  likes?: number;
+  replies?: number;
 }

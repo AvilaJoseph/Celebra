@@ -9,11 +9,10 @@ import { Comment } from './types/Comment.interfaces';
   ],
   templateUrl: './ModalMedia.component.html',
   styleUrl: './ModalMedia.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalMediaComponent {
 
-   @Input() showModal: boolean = false;
+  @Input() showModal: boolean = false;
   @Input() item: any;
   @Output() closeModal = new EventEmitter<void>();
 
@@ -21,24 +20,55 @@ export class ModalMediaComponent {
   defaultComments: Comment[] = [
     {
       id: 1,
-      author: 'María González',
-      avatar: 'https://via.placeholder.com/40',
-      text: '¡Me encanta esta imagen! Excelente trabajo.',
-      date: 'Hace 2 horas'
+      author: 'camiso_x12',
+      avatar: 'https://via.placeholder.com/32',
+      text: 'OMG qué guapa y hermosa ❤️ como siempre 😍',
+      date: '3 d',
+      likes: 1,
+      replies: 1
     },
     {
       id: 2,
-      author: 'Carlos Rivera',
-      avatar: 'https://via.placeholder.com/40',
-      text: 'Los colores están increíbles 👏',
-      date: 'Hace 1 día'
+      author: 'katheryn_who',
+      avatar: 'https://via.placeholder.com/32',
+      text: 'Que lindo esquema de luces 🌟',
+      date: '4 d',
+      likes: 1,
+      replies: 1
     },
     {
       id: 3,
-      author: 'Ana Martínez',
-      avatar: 'https://via.placeholder.com/40',
-      text: 'Inspirador, definitivamente voy a intentar algo similar.',
-      date: 'Hace 2 días'
+      author: 'merykatesy',
+      avatar: 'https://via.placeholder.com/32',
+      text: 'Bellas fotos ❤️🔥',
+      date: '4 d',
+      likes: 1,
+      replies: 1
+    },
+    {
+      id: 4,
+      author: 'millagrosbalbin',
+      avatar: 'https://via.placeholder.com/32',
+      text: 'Divaaaaa',
+      date: '4 d',
+      likes: 1,
+      replies: 1
+    },
+    {
+      id: 5,
+      author: 'dayaaaquino',
+      avatar: 'https://via.placeholder.com/32',
+      text: 'Regiaaaaa 💎',
+      date: '4 d',
+      likes: 1,
+      replies: 1
+    },
+    {
+      id: 6,
+      author: 'camiso_x12',
+      avatar: 'https://via.placeholder.com/32',
+      text: '',
+      date: '4 d'
     }
   ];
 
@@ -46,4 +76,8 @@ export class ModalMediaComponent {
     this.closeModal.emit();
   }
 
+  onBackdropClick(event: MouseEvent) {
+    // Solo cerramos si el clic fue directamente en el backdrop (no en el contenido)
+    this.close();
+  }
  }

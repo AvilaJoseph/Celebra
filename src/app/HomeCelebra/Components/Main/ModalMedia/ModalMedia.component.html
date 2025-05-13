@@ -1,6 +1,6 @@
-<div class="modal" *ngIf="showModal">
-  <div class="modal-content">
-    <button class="close-button" (click)="close()">X</button>
+<div class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="close()">×</button>
     
     <!-- Contenido principal dividido en dos -->
     <div class="modal-main-content">
@@ -11,55 +11,86 @@
         </div>
       </div>
       
-      <!-- Lado derecho - Información -->
+      <!-- Lado derecho - Información estilo Instagram -->
       <div class="modal-right-section">
         <!-- Header con información del usuario -->
         <div class="user-header">
           <div class="user-info">
             <img [src]="item?.userAvatar || 'assets/default-avatar.jpg'" alt="Avatar" class="user-avatar">
             <div class="user-details">
-              <h3 class="user-name">{{ item?.userName || 'Usuario' }}</h3>
-              <p class="post-date">{{ item?.date || '15 de mayo, 2025' }}</p>
+              <h3 class="user-name">{{ item?.userName || 'danarocksyou' }}</h3>
+              <p class="location">{{ item?.location || '' }}</p>
             </div>
           </div>
+          <button class="follow-btn">Seguir</button>
+          <button class="menu-btn">⋯</button>
         </div>
         
-        <!-- Descripción -->
-        <div class="description-section">
-          <h2>{{ item?.name || 'Título de la publicación' }}</h2>
-          <p class="description">{{ item?.description || 'Descripción de la publicación.' }}</p>
-        </div>
-        
-        <!-- Estadísticas de reacciones -->
-        <div class="reactions-stats">
-          <div class="stats-item">
-            <span class="heart-icon">❤️</span>
-            <span class="count">{{ item?.likes || 24 }}</span>
+        <!-- Descripción dentro del área de comentarios -->
+        <div class="content-area">
+          <!-- Post original del usuario -->
+          <div class="original-post">
+            <img [src]="item?.userAvatar || 'assets/default-avatar.jpg'" alt="Avatar" class="comment-avatar">
+            <div class="post-content">
+              <span class="username">{{ item?.userName || 'danarocksyou' }}</span>
+              <span class="description">{{ item?.description || 'lo admito... me gusta que me tomen fotos!!! 🔥' }}</span>
+              <div class="hashtags">
+                <span class="hashtag">#BlueVibes</span>
+                <span class="hashtag">#EditorialMood</span>
+                <span class="hashtag">#ModelShot</span>
+                <span class="hashtag">#NeonGlow</span>
+                <span class="hashtag">#aestheticlook</span>
+              </div>
+              <div class="post-time">Editado • {{ item?.editedTime || '4 d' }}</div>
+            </div>
           </div>
-          <div class="stats-item">
-            <span class="bookmark-icon">🔖</span>
-            <span class="count">{{ item?.bookmarks || 5 }}</span>
-          </div>
-          <div class="stats-item">
-            <span class="comment-icon">💬</span>
-            <span class="count">{{ item?.comments?.length || 3 }}</span>
-          </div>
-        </div>
-        
-        <!-- Sección de comentarios -->
-        <div class="comments-section">
-          <h4>Comentarios</h4>
-          <div class="comments-list">
+          
+          <!-- Comentarios -->
+          <div class="comments-section">
             <div class="comment" *ngFor="let comment of item?.comments || defaultComments">
               <img [src]="comment.avatar" alt="Avatar" class="comment-avatar">
               <div class="comment-content">
-                <div class="comment-header">
+                <div class="comment-main">
                   <span class="comment-author">{{ comment.author }}</span>
-                  <span class="comment-date">{{ comment.date }}</span>
+                  <span class="comment-text">{{ comment.text }}</span>
                 </div>
-                <p class="comment-text">{{ comment.text }}</p>
+                <div class="comment-actions">
+                  <span class="comment-time">{{ comment.date }}</span>
+                  <span class="likes-count">{{ comment.likes || '1' }} Me gusta</span>
+                  <button class="reply-btn">Responder</button>
+                  <button class="view-replies" *ngIf="comment.replies">Ver respuestas ({{ comment.replies }})</button>
+                </div>
               </div>
+              <button class="like-comment">♡</button>
             </div>
+          </div>
+        </div>
+        
+        <!-- Footer con acciones -->
+        <div class="post-footer">
+          <!-- Botones de acción -->
+          <div class="action-buttons">
+            <button class="action-btn like-btn">♡</button>
+            <button class="action-btn comment-btn">💬</button>
+            <button class="action-btn share-btn">✈</button>
+            <button class="action-btn save-btn">🔖</button>
+          </div>
+          
+          <!-- Contador de likes -->
+          <div class="likes-count">
+            <span class="likes-text">{{ item?.likes || '194' }} Me gusta</span>
+          </div>
+          
+          <!-- Tiempo transcurrido -->
+          <div class="time-elapsed">
+            {{ item?.timeElapsed || 'Hace 4 días' }}
+          </div>
+          
+          <!-- Agregar comentario -->
+          <div class="add-comment">
+            <img [src]="'assets/current-user-avatar.jpg'" alt="Tu avatar" class="current-user-avatar">
+            <input type="text" placeholder="Agrega un comentario..." class="comment-input">
+            <button class="publish-btn">Publicar</button>
           </div>
         </div>
       </div>

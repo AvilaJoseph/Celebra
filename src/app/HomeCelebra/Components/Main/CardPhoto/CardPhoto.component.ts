@@ -22,42 +22,60 @@ export class CardPhotoComponent {
   showHoverElements = false;
   showModal = false;
   modalItem = {
-    name: 'Paisaje Montañoso',
-    description: 'Una hermosa vista de montañas con un atardecer espectacular. Esta imagen captura la belleza natural del paisaje montañoso durante la hora dorada.',
-    image: 'https://via.placeholder.com/800x600/4a90e2/ffffff?text=Imagen+de+Paisaje',
-    userName: 'Alin Luna',
-    userAvatar: 'https://via.placeholder.com/50',
-    date: '15 de mayo, 2025',
-    likes: 142,
-    bookmarks: 28,
+    name: 'Editorial Model Shot',
+    description: 'lo admito... me gusta que me tomen fotos!!! 🔥',
+    image: 'https://via.placeholder.com/600x400/3B82F6/ffffff?text=Editorial+Model+Shot',
+    userName: 'danarocksyou',
+    userAvatar: 'https://via.placeholder.com/32',
+    location: '',
+    editedTime: '4 d',
+    timeElapsed: 'Hace 4 días',
+    likes: 194,
     comments: [
       {
         id: 1,
-        author: 'María González',
-        avatar: 'https://via.placeholder.com/40',
-        text: '¡Me encanta esta imagen! Los colores del atardecer están increíbles.',
-        date: 'Hace 2 horas'
+        author: 'camiso_x12',
+        avatar: 'https://via.placeholder.com/32',
+        text: 'OMG qué guapa y hermosa ❤️ como siempre 😍',
+        date: '3 d',
+        likes: 1,
+        replies: 1
       },
       {
         id: 2,
-        author: 'Carlos Rivera',
-        avatar: 'https://via.placeholder.com/40',
-        text: '¿Dónde fue tomada esta foto? Me encantaría visitar ese lugar.',
-        date: 'Hace 1 día'
+        author: 'katheryn_who',
+        avatar: 'https://via.placeholder.com/32',
+        text: 'Que lindo esquema de luces 🌟',
+        date: '4 d',
+        likes: 1,
+        replies: 1
       },
       {
         id: 3,
-        author: 'Ana Martínez',
-        avatar: 'https://via.placeholder.com/40',
-        text: 'Excelente composición. El contraste entre las montañas y el cielo es perfecto.',
-        date: 'Hace 2 días'
+        author: 'merykatesy',
+        avatar: 'https://via.placeholder.com/32',
+        text: 'Bellas fotos ❤️🔥',
+        date: '4 d',
+        likes: 1,
+        replies: 1
       },
       {
         id: 4,
-        author: 'Luis Pérez',
-        avatar: 'https://via.placeholder.com/40',
-        text: 'Inspirador 🏔️ Definitivamente vas a ser mi fondo de pantalla.',
-        date: 'Hace 3 días'
+        author: 'millagrosbalbin',
+        avatar: 'https://via.placeholder.com/32',
+        text: 'Divaaaaa',
+        date: '4 d',
+        likes: 1,
+        replies: 1
+      },
+      {
+        id: 5,
+        author: 'dayaaaquino',
+        avatar: 'https://via.placeholder.com/32',
+        text: 'Regiaaaaa 💎',
+        date: '4 d',
+        likes: 1,
+        replies: 1
       }
     ]
   };
