@@ -223,3 +223,9 @@
 .button:focus-visible {
   box-shadow: none;
 }
+
+.logo{
+  width: 110%;
+  height: 130px;
+  margin-top: 45px;
+}
