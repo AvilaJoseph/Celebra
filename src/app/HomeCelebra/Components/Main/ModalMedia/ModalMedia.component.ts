@@ -16,6 +16,8 @@ export class ModalMediaComponent {
   @Input() item: any;
   @Output() closeModal = new EventEmitter<void>();
 
+  isVisible: boolean = false;
+
   // Datos de ejemplo para comentarios si no vienen en el item
   defaultComments: Comment[] = [
     {
@@ -72,12 +74,27 @@ export class ModalMediaComponent {
     }
   ];
 
+  ngOnChanges() {
+    if (this.showModal && !this.isVisible) {
+      // Pequeño delay para permitir que el DOM se actualice antes de la animación
+      setTimeout(() => {
+        this.isVisible = true;
+      }, 10);
+    } else if (!this.showModal) {
+      this.isVisible = false;
+    }
+  }
+
   close() {
-    this.closeModal.emit();
+    this.isVisible = false;
+    // Tiempo reducido para cerrar más rápido
+    setTimeout(() => {
+      this.closeModal.emit();
+    }, 150);
   }
 
   onBackdropClick(event: MouseEvent) {
     // Solo cerramos si el clic fue directamente en el backdrop (no en el contenido)
     this.close();
   }
- }
+}

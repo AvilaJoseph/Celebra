@@ -1,4 +1,4 @@
-<div class="modal" *ngIf="showModal" (click)="onBackdropClick($event)">
+<div class="modal" [class.show]="isVisible" *ngIf="showModal" (click)="onBackdropClick($event)">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <button class="close-button" (click)="close()">×</button>
     
@@ -47,7 +47,9 @@
           
           <!-- Comentarios -->
           <div class="comments-section">
-            <div class="comment" *ngFor="let comment of item?.comments || defaultComments">
+            <div class="comment" 
+                 *ngFor="let comment of item?.comments || defaultComments; let i = index"
+                 [style.--comment-index]="i">
               <img [src]="comment.avatar" alt="Avatar" class="comment-avatar">
               <div class="comment-content">
                 <div class="comment-main">
