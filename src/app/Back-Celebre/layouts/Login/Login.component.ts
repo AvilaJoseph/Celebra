@@ -50,4 +50,22 @@ export class LoginComponent {
     console.log(`${provider} login clicked`);
     alert(`${provider} login would be implemented here!`);
   }
+
+  /**
+   * Handle forgot password
+   */
+  onForgotPassword(event: Event): void {
+    event.preventDefault();
+    console.log('Forgot password clicked');
+    alert('Forgot password functionality would be implemented here!');
+  }
+
+  /**
+   * Handle request new account
+   */
+  onRequestAccount(event: Event): void {
+    event.preventDefault();
+    console.log('Request account clicked');
+    alert('Request new account functionality would be implemented here!');
+  }
 }

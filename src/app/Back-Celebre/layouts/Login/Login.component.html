@@ -1,4 +1,40 @@
 <div class="container">
   <div class="login-container">
+    <div class="header">
+      <h2>Agent Login</h2>
+      <p>Hey, Enter your details to get sign in<br>to your account</p>
+    </div>
+    <form class="form-container" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <input class="login-input"
+          type="email" 
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Enter Email / Phone No"
+          required>
+      </div>
+      
+      <div class="input-group password-group">
+        <input class="login-input"
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Passcode"
+          required>
+        <button type="button" class="toggle-password" (click)="togglePassword()">
+          {{ showPassword ? 'Show' : 'Hide' }}
+        </button>
+      </div>
+      
+      <div class="forgot-password">
+        <a href="#" (click)="onForgotPassword($event)">Having trouble to sign in?</a>
+      </div>
+      
+      <button type="submit" class="signin-button">Sign in</button>
+      
+      <div class="signup-link">
+        Don't have an account? <a href="#" (click)="onRequestAccount($event)">Request Now</a>
+      </div>
+    </form>
   </div>
 </div>

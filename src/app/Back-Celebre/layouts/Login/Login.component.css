@@ -1,18 +1,213 @@
 .container {
- height: 100vh;
- width: 100%;
- display: flex;
- align-items: center;
- justify-content: center;
- background-color: rgb(245, 246, 246);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(245, 246, 246);
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.header h2{
+    font-family: 'Montserrat', 'Open Sans', 'Rubik', sans-serif;
+    font-weight: 700;
+    color: #333;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.header p{
+    font-family: 'Montserrat', 'Open Sans', 'Rubik', sans-serif;
+    font-weight: 400;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: center;
+    margin: 0;
+    line-height: 1.4;
 }
 
 .login-container {
- width: 600px;
- max-width: 90%;
- background-color: rgb(127, 85, 85);
- padding: 40px;
- border-radius: 10px;
- box-shadow: 0 4px 20px rgba(0, 0, 0, 0.031);
- text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    max-width: 90%;
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+.password-group {
+    position: relative;
+}
+
+.login-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: 'Montserrat', 'Open Sans', 'Rubik', sans-serif;
+    box-sizing: border-box;
+}
+
+.login-input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.login-input:focus {
+    border-color: #ff9500;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    padding: 5px;
+}
+
+.toggle-password:hover {
+    color: #666;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-top: -10px;
+}
+
+.forgot-password a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.forgot-password a:hover {
+    color: #ff9500;
+    text-decoration: underline;
+}
+
+.signin-button {
+    width: 100%;
+    background-color: #ff9500;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.signin-button:hover {
+    background-color: #e6860a;
+}
+
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e8e8e8;
+}
+
+.divider span {
+    background-color: white;
+    color: #999;
+    padding: 0 15px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border: 2px solid #e8e8e8;
+    border-radius: 10px;
+    background-color: white;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    border-color: #ccc;
+    background-color: #f9f9f9;
+}
+
+.social-icon {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.signup-link {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signup-link a {
+    color: #ff9500;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
 }
