@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DashboardComponent } from './layouts/Dashboard/Dashboard.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-back-celebre',
   imports: [
     CommonModule,
-    DashboardComponent,
+    RouterOutlet
   ],
   templateUrl: './Back-Celebre.component.html',
   styleUrl: './Back-Celebre.component.css',
