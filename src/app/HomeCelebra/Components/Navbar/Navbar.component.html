@@ -1,9 +1,11 @@
 <div class="navbar-container">
-    <nav class="navbar">
+    <nav class="navbar" [class.menu-open]="showMobileMenu">
       <div class="navbar-brand">
         <img src="celebre.png" alt="Logo" class="logo" />
       </div>
-      <ul class="navbar-menu">
+      
+      <!-- Desktop Menu -->
+      <ul class="navbar-menu desktop-menu">
         <li 
             class="menu-item"
             (mouseenter)="showHomeModal = true" 
@@ -66,7 +68,80 @@
             </div>
             </div>
         </li>
-            <li class="contact-button"><a class="button" routerLink="/contact">Login</a></li>
-        </ul>
+        <li class="contact-button"><a class="button" routerLink="/contact">Login</a></li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+      </button>
     </nav>
-  </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" [class.active]="showMobileMenu" (click)="closeMobileMenu()">
+      <div class="mobile-menu" (click)="$event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <img src="celebre.png" alt="Logo" class="mobile-logo" />
+        </div>
+        
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <div class="mobile-menu-link" (click)="toggleHomeSubmenu()">
+              <span>Home</span>
+              <img class="mobile-down-icon" [class.rotated]="showHomeSubmenu" src="icons/down-arrow.svg" alt="">
+            </div>
+            <ul class="mobile-submenu" [class.open]="showHomeSubmenu">
+              <li><a routerLink="/home/discover" (click)="closeMobileMenu()">Descubrir fotos</a></li>
+              <li><a routerLink="/home/trending" (click)="closeMobileMenu()">Lo más visitado</a></li>
+              <li><a routerLink="/home/challenges" (click)="closeMobileMenu()">Retos</a></li>
+              <li><a routerLink="/home/videos" (click)="closeMobileMenu()">Videos gratuitos</a></li>
+              <li><a routerLink="/home/blog" (click)="closeMobileMenu()">Blog de Pexels</a></li>
+            </ul>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <a routerLink="/about" (click)="closeMobileMenu()">About</a>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <div class="mobile-menu-link" (click)="toggleSettingsSubmenu()">
+              <span>Configuración</span>
+              <img class="mobile-down-icon" [class.rotated]="showSettingsSubmenu" src="icons/down-arrow.svg" alt="">
+            </div>
+            <ul class="mobile-submenu" [class.open]="showSettingsSubmenu">
+              <li><a routerLink="/login" (click)="closeMobileMenu()">Iniciar sesión</a></li>
+              <li><a routerLink="/api" (click)="closeMobileMenu()">API de imagen y vídeo</a></li>
+              <li><a routerLink="/apps" (click)="closeMobileMenu()">Aplicaciones y complementos</a></li>
+              <li><a routerLink="/support" (click)="closeMobileMenu()">Centro de ayuda</a></li>
+              <li><a routerLink="/report" (click)="closeMobileMenu()">Denunciar contenido</a></li>
+              <li><a routerLink="/contributors" (click)="closeMobileMenu()">Colaboradores</a></li>
+              <li><a routerLink="/terms" (click)="closeMobileMenu()">Impressum y Condiciones</a></li>
+            </ul>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <div class="mobile-lang-section">
+              <div class="mobile-lang-option">
+                <img src="icons/spain-flag.svg" alt="Idioma" class="icon-flag">
+                <span>Cambiar idioma</span>
+              </div>
+              
+              <div class="mobile-social-icons">
+                <img src="icons/instagram.svg" alt="Instagram">
+                <img src="icons/facebook.svg" alt="Facebook">
+                <img src="icons/pinterest.svg" alt="Pinterest">
+                <img src="icons/youtube.svg" alt="YouTube">
+                <img src="icons/tiktok.svg" alt="TikTok">
+              </div>
+            </div>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <a class="mobile-login-btn" routerLink="/contact" (click)="closeMobileMenu()">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>

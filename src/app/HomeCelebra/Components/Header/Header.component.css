@@ -5,7 +5,7 @@
 .header {
   position: relative;
   width: 100%;
-  min-height: 600px;
+  min-height: 100vh;
   background: 
     linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
     url('https://images.pexels.com/photos/15315956/pexels-photo-15315956.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=500&w=2000') 
