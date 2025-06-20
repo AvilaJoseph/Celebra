@@ -12,7 +12,6 @@ export const routes: Routes = [
         path: 'auth',
         loadComponent: () => import('./Back-Celebre/Back-Celebre.component').then(b => b.BackCelebreComponent),
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent },
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
