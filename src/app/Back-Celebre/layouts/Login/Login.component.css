@@ -83,7 +83,8 @@
 }
 
 .login-input:focus {
-    border-color: #ff9500;
+    /* border-color: #ff9500; */
+        border: 2px solid #cecccc;
 }
 
 .toggle-password {

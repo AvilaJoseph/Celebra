@@ -8,7 +8,7 @@ export const routes: Routes = [
         loadComponent: () => import('./HomeCelebra/HomeCelebra.component').then(m => m.HomeCelebraComponent)
     },
     {
-        path: 'back',
+        path: 'auth',
         loadComponent: () => import('./Back-Celebre/Back-Celebre.component').then(b => b.BackCelebreComponent),
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
