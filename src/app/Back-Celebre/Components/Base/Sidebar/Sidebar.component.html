@@ -1,0 +1,17 @@
+<aside class="sidebar" [class.sidebar-open]="isOpen">
+  <div class="sidebar-overlay" (click)="closeSidebar()"></div>
+  <div class="sidebar-content">
+    <div class="sidebar-section" *ngFor="let section of sections">
+      <h3 class="sidebar-title">{{section.title}}</h3>
+      <ul class="sidebar-menu">
+        <li class="menu-item" 
+            *ngFor="let item of section.items"
+            [class.active]="item.active"
+            (click)="selectMenuItem(item)">
+          <span class="menu-icon">{{item.icon}}</span>
+          <span class="menu-text">{{item.text}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</aside>
