@@ -19,7 +19,8 @@
   font-size: 1.2em;
   color: #fff;
   position: relative;
-  overflow: hidden; /* Para contener los efectos de animación */
+  overflow: hidden;
+  cursor: pointer;
 }
 
 /* Estilo cuando el mouse está sobre la tarjeta */
@@ -39,6 +40,11 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: 10;
+  pointer-events: none;
+}
+
+.hover-elements-container * {
+  pointer-events: auto;
 }
 
 /* Navbar estilo para top-right-icons */
@@ -52,7 +58,8 @@
 }
 
 /* Animación para los iconos superiores - de derecha a izquierda */
-.item:hover .top-right-icons {
+.item:hover .top-right-icons,
+.item.mobile-active .top-right-icons {
   animation: slideInFromRight 0.5s ease-out;
 }
 
@@ -79,9 +86,11 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  min-width: 36px;
+  min-height: 36px;
 }
 
-/* Fondo del icono que aparece en hover - Desde la derecha */
+/* Fondo del icono que aparece en hover */
 .icon-wrapper:before {
   content: "";
   position: absolute;
@@ -94,7 +103,8 @@
   z-index: 0;
 }
 
-.icon-wrapper:hover:before {
+.icon-wrapper:hover:before,
+.icon-wrapper:active:before {
   background: rgba(0, 0, 0, 0.4);
 }
 
@@ -108,7 +118,8 @@
 }
 
 /* Efecto hover solo para el wrapper, no para el icono */
-.icon-wrapper:hover {
+.icon-wrapper:hover,
+.icon-wrapper:active {
   transform: scale(1.1);
 }
 
@@ -146,6 +157,7 @@
   overflow: hidden;
   margin-right: 8px;
   border: 2px solid #fff;
+  flex-shrink: 0;
 }
 
 .user-avatar img {
@@ -159,6 +171,9 @@
   font-size: 14px;
   font-weight: 600;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Menubar estilo para bottom-bar */
@@ -187,7 +202,7 @@
   }
 }
 
-.btn-container{
+.btn-container {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -196,7 +211,7 @@
 }
 
 .btn-download {
-  z-index: 0;
+  z-index: 1;
   box-sizing: border-box;
   width: max-content;
   height: 50px;
@@ -208,7 +223,7 @@
   border: 1px solid;
   border-radius: 12px;
   outline: none;
-  transition: background-color .1s, border ease-in-out, transform .1s, box-shadow 5ms, border-color .25s;
+  transition: background-color 0.1s, border ease-in-out, transform 0.1s, box-shadow 5ms, border-color 0.25s;
   color: #fff;
   background: #54ca84;
   border-color: #54ca84;
@@ -220,9 +235,11 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  min-height: 44px;
 }
 
-.btn-download:hover {
+.btn-download:hover,
+.btn-download:active {
   background: #48b073;
   border-color: #48b073;
 }
@@ -244,11 +261,348 @@
   transition: transform 0.2s ease;
 }
 
-/* .btn-download:hover .icon-download-svg {
-  transform: translateY(2px);
-} */
-
 /* Contenido central */
 .item-content {
   z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .item {
+    padding: 16px;
+    font-size: 1.1em;
+  }
+  
+  .top-right-icons {
+    top: 10px;
+    right: 10px;
+    gap: 8px;
+  }
+  
+  .icon-wrapper {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+  }
+  
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .user-info {
+    bottom: 15px;
+    left: 16px;
+  }
+  
+  .user-avatar {
+    width: 46px;
+    height: 46px;
+  }
+  
+  .user-name {
+    font-size: 13px;
+  }
+  
+  .bottom-bar {
+    padding: 12px;
+  }
+  
+  .btn-download {
+    height: 46px;
+    font-size: 0.95rem;
+    padding: 0 18px;
+    gap: 6px;
+  }
+  
+  .svg-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .item {
+    padding: 12px;
+    font-size: 1em;
+    border-radius: 6px;
+  }
+  
+  /* En móviles, mostrar elementos en tap/click en lugar de hover */
+  .item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .item.mobile-active {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .top-right-icons {
+    top: 8px;
+    right: 8px;
+    gap: 6px;
+  }
+  
+  .icon-wrapper {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    border-radius: 6px;
+  }
+  
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .icon-bookmark {
+    width: 24px;
+    height: 18px;
+  }
+  
+  .user-info {
+    bottom: 12px;
+    left: 12px;
+  }
+  
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 6px;
+  }
+  
+  .user-name {
+    font-size: 12px;
+    max-width: 120px;
+  }
+  
+  .bottom-bar {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .btn-download {
+    height: 42px;
+    font-size: 0.9rem;
+    padding: 0 16px;
+    gap: 6px;
+    border-radius: 10px;
+    min-height: 42px;
+  }
+  
+  .svg-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  
+  .top-right-icons {
+    top: 6px;
+    right: 6px;
+    gap: 4px;
+  }
+  
+  .icon-wrapper {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .icon-bookmark {
+    width: 20px;
+    height: 16px;
+  }
+  
+  .user-info {
+    bottom: 10px;
+    left: 10px;
+  }
+  
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    margin-right: 6px;
+  }
+  
+  .user-name {
+    font-size: 11px;
+    max-width: 100px;
+  }
+  
+  .bottom-bar {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .btn-download {
+    height: 38px;
+    font-size: 0.85rem;
+    padding: 0 14px;
+    gap: 4px;
+    min-height: 38px;
+  }
+  
+  .svg-icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .item {
+    padding: 8px;
+    font-size: 0.8em;
+  }
+  
+  .top-right-icons {
+    top: 4px;
+    right: 4px;
+    gap: 3px;
+  }
+  
+  .icon-wrapper {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+  }
+  
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .icon-bookmark {
+    width: 18px;
+    height: 14px;
+  }
+  
+  .user-info {
+    bottom: 8px;
+    left: 8px;
+  }
+  
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 4px;
+  }
+  
+  .user-name {
+    font-size: 10px;
+    max-width: 80px;
+  }
+  
+  .bottom-bar {
+    padding: 6px;
+    gap: 6px;
+  }
+  
+  .btn-download {
+    height: 36px;
+    font-size: 0.8rem;
+    padding: 0 12px;
+    gap: 3px;
+    min-height: 36px;
+  }
+  
+  .svg-icon {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .icon-wrapper:hover:before {
+    background: rgba(0, 0, 0, 0);
+  }
+  
+  .icon-wrapper:hover {
+    transform: none;
+  }
+  
+  .btn-download:hover {
+    background: #54ca84;
+    border-color: #54ca84;
+  }
+  
+  .icon-wrapper:active:before {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .icon-wrapper:active {
+    transform: scale(0.95);
+  }
+  
+  .btn-download:active {
+    background: #48b073;
+    border-color: #48b073;
+    transform: scale(0.98);
+  }
+  
+  .item:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .icon-wrapper,
+  .icon,
+  .icon-bookmark,
+  .icon-download-svg,
+  .btn-download {
+    transition: none;
+  }
+  
+  .item:hover .top-right-icons,
+  .item.mobile-active .top-right-icons {
+    animation: none;
+  }
+  
+  .user-info,
+  .bottom-bar {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .item {
+    border: 2px solid #000;
+  }
+  
+  .icon-wrapper:before {
+    border: 1px solid #000;
+  }
+  
+  .btn-download {
+    border: 2px solid #000;
+  }
+  
+  .user-avatar {
+    border: 3px solid #fff;
+  }
 }

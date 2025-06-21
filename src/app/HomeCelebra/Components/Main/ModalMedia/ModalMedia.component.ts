@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 import { Comment } from './types/Comment.interfaces';
 
 @Component({
@@ -10,7 +10,7 @@ import { Comment } from './types/Comment.interfaces';
   templateUrl: './ModalMedia.component.html',
   styleUrl: './ModalMedia.component.css',
 })
-export class ModalMediaComponent {
+export class ModalMediaComponent implements OnChanges {
 
   @Input() showModal: boolean = false;
   @Input() item: any;
@@ -18,7 +18,6 @@ export class ModalMediaComponent {
 
   isVisible: boolean = false;
 
-  // Datos de ejemplo para comentarios si no vienen en el item
   defaultComments: Comment[] = [
     {
       id: 1,
@@ -64,37 +63,28 @@ export class ModalMediaComponent {
       date: '4 d',
       likes: 1,
       replies: 1
-    },
-    {
-      id: 6,
-      author: 'camiso_x12',
-      avatar: 'https://via.placeholder.com/32',
-      text: '',
-      date: '4 d'
     }
   ];
 
   ngOnChanges() {
-    if (this.showModal && !this.isVisible) {
-      // Pequeño delay para permitir que el DOM se actualice antes de la animación
+    if (this.showModal) {
+      // Forzar render del DOM antes de la animación
       setTimeout(() => {
         this.isVisible = true;
-      }, 10);
-    } else if (!this.showModal) {
+      }, 50);
+    } else {
       this.isVisible = false;
     }
   }
 
   close() {
     this.isVisible = false;
-    // Tiempo reducido para cerrar más rápido
     setTimeout(() => {
       this.closeModal.emit();
-    }, 150);
+    }, 10);
   }
 
   onBackdropClick(event: MouseEvent) {
-    // Solo cerramos si el clic fue directamente en el backdrop (no en el contenido)
     this.close();
   }
 }

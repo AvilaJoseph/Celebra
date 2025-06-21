@@ -1,27 +1,57 @@
 <div class="filtrer-photo-container">
-    <div class="list-text-photo">
-      <li>Fotos de Stock gratuitas</li>
-      <li
-        class="menu-item dropdown-wrapper"
-        (mouseenter)="showStockModal = true"
-        (mouseleave)="showStockModal = false"
+  <div class="list-text-photo">
+    <li>Fotos de Stock gratuitas</li>
+    <li
+      class="menu-item dropdown-wrapper"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()"
+      (click)="toggleDropdown($event)"
+    >
+      <div 
+        class="dropdown-trigger"
+        [attr.aria-expanded]="showStockModal"
+        [attr.aria-haspopup]="true"
+        role="button"
+        tabindex="0"
+        (keydown)="onKeyDown($event)"
       >
-        <div class="dropdown-trigger">
-          <span>{{ selectedOption || "Selecciona una opción" }}</span>
-          <img class="down-iconos" src="icons/down-arrow.svg" alt="" />
-        </div>
-  
-        <!-- Modal dropdown -->
-        <div
-          class="modal-hover"
-          [ngClass]="{ visible: showStockModal, hidden: !showStockModal }"
-        >
-          <ul class="dropdown-list">
-            <li (click)="selectOption('Tendencias')">Tendencias</li>
-            <li (click)="selectOption('Lo nuevo')">Lo nuevo</li>
-          </ul>
-        </div>
-      </li>
-    </div>
+        <span>{{ selectedOption || "Selecciona una opción" }}</span>
+        <img 
+          class="down-iconos" 
+          src="icons/down-arrow.svg" 
+          alt="Abrir menú"
+          [style.transform]="showStockModal ? 'rotate(180deg)' : 'rotate(0deg)'"
+        />
+      </div>
+
+      <!-- Modal dropdown -->
+      <div
+        class="modal-hover"
+        [ngClass]="{ visible: showStockModal, hidden: !showStockModal }"
+        role="listbox"
+        [attr.aria-label]="'Opciones de filtro'"
+      >
+        <ul class="dropdown-list">
+          <li 
+            (click)="selectOption('Tendencias')"
+            (keydown)="onOptionKeyDown($event, 'Tendencias')"
+            role="option"
+            tabindex="0"
+            [attr.aria-selected]="selectedOption === 'Tendencias'"
+          >
+            Tendencias
+          </li>
+          <li 
+            (click)="selectOption('Lo nuevo')"
+            (keydown)="onOptionKeyDown($event, 'Lo nuevo')"
+            role="option"
+            tabindex="0"
+            [attr.aria-selected]="selectedOption === 'Lo nuevo'"
+          >
+            Lo nuevo
+          </li>
+        </ul>
+      </div>
+    </li>
   </div>
-  
+</div>
