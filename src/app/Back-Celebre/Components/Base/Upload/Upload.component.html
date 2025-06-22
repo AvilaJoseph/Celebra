@@ -1,1 +1,146 @@
-<p>Upload works!</p>,
+<!-- Upload.component.html -->
+<div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="upload-step">upload v1 - step 1</div>
+      <button class="close-btn" (click)="closeModal()">✕</button>
+    </div>
+
+    <!-- Title Section -->
+    <div class="title-section">
+      <h2 class="modal-title">Media Upload</h2>
+      <p class="modal-subtitle">Add your documents here, and you can upload up to 5 files max</p>
+    </div>
+
+    <!-- Upload Zone -->
+    <div class="upload-container">
+      <div class="upload-zone" 
+           [class.drag-over]="isDragOver"
+           (dragover)="onDragOver($event)"
+           (dragleave)="onDragLeave($event)"
+           (drop)="onDrop($event)">
+        
+        <input #fileInput 
+               type="file" 
+               multiple 
+               accept="image/jpeg,image/jpg,image/png,image/svg+xml,.zip"
+               (change)="onFileSelect($event)"
+               style="display: none;">
+        
+        <div class="upload-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="14,2 14,8 20,8" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        
+        <p class="upload-text">Drag your file(s) to start uploading</p>
+        
+        <div class="or-divider">OR</div>
+        
+        <button type="button" class="browse-btn" (click)="fileInput.click()">
+          Browse files
+        </button>
+      </div>
+      
+      <p class="file-support">Only support .jpg, .png and .svg and .zip files</p>
+    </div>
+
+    <!-- Files Preview (shown after files are selected) -->
+    <div class="files-preview" *ngIf="files.length > 0">
+      <h4 class="preview-title">Selected Files ({{files.length}})</h4>
+      <div class="files-list">
+        <div class="file-item" *ngFor="let file of files; let i = index">
+          <div class="file-icon">📄</div>
+          <div class="file-info">
+            <div class="file-name">{{file.file.name}}</div>
+            <div class="file-size">{{formatFileSize(file.file.size)}}</div>
+          </div>
+          <div class="file-actions">
+            <div class="upload-progress" *ngIf="file.uploading">
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="file.progress"></div>
+              </div>
+              <span class="progress-text">{{file.progress | number:'1.0-0'}}%</span>
+            </div>
+            <button class="remove-file" 
+                    (click)="removeFile(i)"
+                    [disabled]="file.uploading"
+                    *ngIf="!file.uploading">✕</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form for additional details -->
+      <form class="upload-form" (ngSubmit)="uploadFiles()">
+        <div class="form-group">
+          <label for="title">Event Title *</label>
+          <input type="text" 
+                 id="title"
+                 [(ngModel)]="title" 
+                 name="title" 
+                 placeholder="Quinceañero de María - Ceremonia"
+                 required
+                 maxlength="100">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description"
+                    [(ngModel)]="description" 
+                    name="description" 
+                    rows="3"
+                    placeholder="Describe the moment captured in these photos..."
+                    maxlength="500"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="category">Category *</label>
+            <select id="category" 
+                    [(ngModel)]="category" 
+                    name="category" 
+                    required>
+              <option value="">Select category</option>
+              <option value="ceremony">Ceremony</option>
+              <option value="reception">Reception</option>
+              <option value="family">Family Photos</option>
+              <option value="dancing">Dancing</option>
+              <option value="decorations">Decorations</option>
+              <option value="food">Food & Cake</option>
+              <option value="candid">Candid Moments</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="photographer">Photographer Name</label>
+            <input type="text" 
+                   id="photographer"
+                   [(ngModel)]="photographerName" 
+                   name="photographer" 
+                   placeholder="Your name">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button type="button" 
+              class="btn-cancel" 
+              (click)="closeModal()">
+        Cancel
+      </button>
+      
+      <button type="button" 
+              class="btn-next" 
+              (click)="nextStep()"
+              [disabled]="files.length === 0">
+        <span *ngIf="!hasUploadingFiles">Next</span>
+        <span *ngIf="hasUploadingFiles">Uploading...</span>
+      </button>
+    </div>
+  </div>
+</div>

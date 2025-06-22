@@ -1,1 +1,157 @@
-<p>UserDashboard works!</p>,
+<!-- Dashboard Content -->
+<div class="dashboard-container">
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Stats Cards -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon photos-total">📸</div>
+        <div class="stat-info">
+          <h3 class="stat-value">{{totalPhotos | number}}</h3>
+          <p class="stat-label">Fotos Subidas</p>
+          <span class="stat-change positive">Total acumulado</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon photos-approved">✅</div>
+        <div class="stat-info">
+          <h3 class="stat-value">{{approvedPhotos | number}}</h3>
+          <p class="stat-label">Fotos Aprobadas</p>
+          <span class="stat-change positive">{{approvalRate}}% del total</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon photos-pending">⏱️</div>
+        <div class="stat-info">
+          <h3 class="stat-value">{{pendingPhotos | number}}</h3>
+          <p class="stat-label">En Revisión</p>
+          <span class="stat-change neutral">Esperando aprobación</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon photos-rejected">❌</div>
+        <div class="stat-info">
+          <h3 class="stat-value">{{rejectedPhotos | number}}</h3>
+          <p class="stat-label">Fotos Rechazadas</p>
+          <span class="stat-change negative">{{rejectionRate}}% del total</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="charts-section">
+      <div class="chart-container">
+        <div class="chart-header">
+          <h2 class="chart-title">Actividad de Subidas</h2>
+          <div class="chart-filters">
+            <button class="filter-btn active">7D</button>
+            <button class="filter-btn">30D</button>
+            <button class="filter-btn">90D</button>
+          </div>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bars">
+            <div class="bar" style="height: 60%" title="Lunes"></div>
+            <div class="bar" style="height: 80%" title="Martes"></div>
+            <div class="bar" style="height: 45%" title="Miércoles"></div>
+            <div class="bar" style="height: 90%" title="Jueves"></div>
+            <div class="bar" style="height: 70%" title="Viernes"></div>
+            <div class="bar" style="height: 30%" title="Sábado"></div>
+            <div class="bar" style="height: 55%" title="Domingo"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-header">
+          <h2 class="chart-title">Estado de mis Fotos</h2>
+        </div>
+        <div class="pie-chart-placeholder">
+          <div class="pie-chart">
+            <div class="pie-slice slice-1"></div>
+            <div class="pie-slice slice-2"></div>
+            <div class="pie-slice slice-3"></div>
+          </div>
+          <div class="pie-legend">
+            <div class="legend-item">
+              <span class="legend-color" style="background: #10b981"></span>
+              <span>Aprobadas ({{approvalRate}}%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: #f59e0b"></span>
+                <span>Pendientes ({{pendingPhotos}})</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background: #ef4444"></span>
+              <span>Rechazadas ({{rejectionRate}}%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Photo Activity -->
+    <section class="activity-section">
+      <div class="activity-header">
+        <h2 class="section-title">Actividad Reciente</h2>
+        <button class="view-all-btn" (click)="viewAllPhotos()">Ver Todas</button>
+      </div>
+      
+      <div class="activity-table">
+        <!-- Desktop Table View -->
+        <table class="data-table desktop-table">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let photo of recentPhotoActivity">
+              <td>
+                <div class="photo-info">
+                  <img [src]="photo.photoThumbnail" [alt]="photo.photoTitle" class="photo-thumbnail">
+                </div>
+              </td>
+              <td class="photo-title">{{photo.photoTitle}}</td>
+              <td>{{photo.category}}</td>
+              <td>{{photo.uploadDate | date:'short'}}</td>
+              <td>
+                <span class="status-badge" [ngClass]="photo.status">
+                  {{photo.status}}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Mobile Cards View -->
+        <div class="mobile-cards">
+          <div class="activity-card" *ngFor="let photo of recentPhotoActivity">
+            <div class="card-header">
+              <div class="photo-info">
+                <img [src]="photo.photoThumbnail" [alt]="photo.photoTitle" class="photo-thumbnail">
+                <div class="photo-details">
+                  <span class="photo-name">{{photo.photoTitle}}</span>
+                  <span class="photo-category">{{photo.category}}</span>
+                </div>
+              </div>
+              <span class="status-badge" [ngClass]="photo.status">
+                {{photo.status}}
+              </span>
+            </div>
+            <div class="card-footer">
+              <span class="activity-date">{{photo.uploadDate | date:'short'}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

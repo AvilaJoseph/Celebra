@@ -1,1 +1,130 @@
-<p>UserProfile works!</p>,
+<div class="profile-container">
+  <!-- Header con avatar y stats -->
+  <div class="profile-header">
+    <div class="avatar-section">
+      <div class="avatar-container" (click)="isEditing && avatarInput.click()">
+        <img [src]="isEditing ? editForm.avatar : user.avatar" 
+             [alt]="user.name" 
+             class="avatar">
+        <div class="avatar-overlay" *ngIf="isEditing">📷</div>
+        <input #avatarInput 
+               type="file" 
+               accept="image/*" 
+               (change)="onAvatarChange($event)"
+               style="display: none;">
+      </div>
+      
+      <div class="user-info" *ngIf="!isEditing">
+        <h1 class="user-name">{{user.name}}</h1>
+        <p class="username">{{user.username}}</p>
+        <p class="user-bio">{{user.bio}}</p>
+        
+        <div class="user-details">
+          <div class="detail-item" *ngIf="user.location">
+            <span class="detail-icon">📍</span>
+            <span>{{user.location}}</span>
+          </div>
+          <div class="detail-item" *ngIf="user.website">
+            <span class="detail-icon">🌐</span>
+            <span>{{user.website}}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">📅</span>
+            <span>Miembro desde {{formatJoinDate()}}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulario de edición -->
+      <div class="edit-form" *ngIf="isEditing">
+        <div class="form-row">
+          <input [(ngModel)]="editForm.name" placeholder="Nombre completo" class="form-input">
+        </div>
+        <div class="form-row">
+          <input [(ngModel)]="editForm.username" placeholder="Nombre de usuario" class="form-input">
+        </div>
+        <div class="form-row">
+          <textarea [(ngModel)]="editForm.bio" placeholder="Biografía" class="form-textarea"></textarea>
+        </div>
+        <div class="form-row">
+          <input [(ngModel)]="editForm.location" placeholder="Ubicación" class="form-input">
+        </div>
+        <div class="form-row">
+          <input [(ngModel)]="editForm.website" placeholder="Sitio web" class="form-input">
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <span class="stat-number">{{stats.photos}}</span>
+        <span class="stat-label">Fotos</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{stats.followers}}</span>
+        <span class="stat-label">Seguidores</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{stats.following}}</span>
+        <span class="stat-label">Siguiendo</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{{stats.likes}}</span>
+        <span class="stat-label">Me gusta</span>
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="action-buttons">
+      <button *ngIf="!isEditing" class="btn-edit" (click)="toggleEdit()">
+        Editar perfil
+      </button>
+      <div class="edit-buttons" *ngIf="isEditing">
+        <button class="btn-cancel" (click)="cancelEdit()">Cancelar</button>
+        <button class="btn-save" (click)="saveProfile()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Configuración -->
+  <div class="settings-section">
+    <div class="section-header">
+      <h2 class="section-title">Configuración</h2>
+    </div>
+    
+    <div class="settings-group">
+      <div class="setting-item" *ngFor="let option of settingsOptions">
+        <div class="setting-info">
+          <span class="setting-icon">{{option.icon}}</span>
+          <div class="setting-text">
+            <h3 class="setting-title">{{option.title}}</h3>
+            <p class="setting-description">{{option.description}}</p>
+          </div>
+        </div>
+        <div class="setting-control">
+          <label class="ios-switch">
+            <input type="checkbox" 
+                   [checked]="settings[option.key]"
+                   (change)="toggleSetting(option.key)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú de opciones -->
+  <div class="menu-section">
+    <div class="menu-group">
+      <div class="menu-item" 
+           *ngFor="let option of menuOptions"
+           (click)="handleMenuAction(option.action)"
+           [class.danger]="option.action === 'logout'">
+        <span class="menu-icon">{{option.icon}}</span>
+        <span class="menu-title">{{option.title}}</span>
+        <span class="menu-arrow">›</span>
+      </div>
+    </div>
+  </div>
+</div>

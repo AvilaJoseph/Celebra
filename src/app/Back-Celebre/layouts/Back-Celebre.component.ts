@@ -96,7 +96,10 @@ export class BackCelebreComponent {
   }
 
   navigate(route: string): void {
+    console.log('Navigate called with route:', route); // Debug
+    
     if (route === 'upload') {
+      console.log('Opening upload modal'); // Debug
       this.uploadModalOpen = true;
     } else if (route === 'logout') {
       this.logout();
@@ -116,16 +119,29 @@ export class BackCelebreComponent {
   }
 
   closeUploadModal(): void {
+    console.log('Closing upload modal'); // Debug
     this.uploadModalOpen = false;
   }
 
-  onFilesUploaded(files: any[]): void {
-    console.log('Archivos subidos:', files);
+  onFilesUploaded(uploadData: any): void {
+    console.log('Upload completed:', uploadData);
     this.notificationCount++;
+    
+    // Aquí puedes integrar con tu backend/Google Drive
+    // Por ejemplo:
+    // this.photoService.uploadToGoogleDrive(uploadData).subscribe(...)
+    
+    alert(`Successfully uploaded ${uploadData.files.length} files for: ${uploadData.metadata.title}`);
   }
 
   logout(): void {
     // Lógica de logout
     this.router.navigate(['/login']);
+  }
+
+  // Método para debug - puedes llamarlo desde el template para probar
+  openUploadModal(): void {
+    console.log('Manually opening upload modal');
+    this.uploadModalOpen = true;
   }
 }

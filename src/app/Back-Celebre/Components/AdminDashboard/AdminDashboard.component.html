@@ -1,1 +1,185 @@
-<p>AdminDashboard works!</p>,
+<!-- Main Content -->
+<main class="main-content">
+  <!-- Stats Cards -->
+  <section class="stats-grid">
+    <div class="stat-card" (click)="onStatClick('revenue')">
+      <div class="stat-icon revenue">💰</div>
+      <div class="stat-info">
+        <h3 class="stat-value">{{totalRevenue | currency:'USD':'symbol':'1.0-0'}}</h3>
+        <p class="stat-label">Ingresos Totales</p>
+        <span class="stat-change positive">+12.5%</span>
+      </div>
+    </div>
+
+    <div class="stat-card" (click)="onStatClick('users')">
+      <div class="stat-icon users">👥</div>
+      <div class="stat-info">
+        <h3 class="stat-value">{{totalUsers | number}}</h3>
+        <p class="stat-label">Usuarios Activos</p>
+        <span class="stat-change positive">+8.2%</span>
+      </div>
+    </div>
+
+    <div class="stat-card" (click)="onStatClick('orders')">
+      <div class="stat-icon orders">📦</div>
+      <div class="stat-info">
+        <h3 class="stat-value">{{totalOrders | number}}</h3>
+        <p class="stat-label">Pedidos Totales</p>
+        <span class="stat-change negative">-2.1%</span>
+      </div>
+    </div>
+
+    <div class="stat-card" (click)="onStatClick('conversion')">
+      <div class="stat-icon conversion">📈</div>
+      <div class="stat-info">
+        <h3 class="stat-value">{{conversionRate}}%</h3>
+        <p class="stat-label">Tasa de Conversión</p>
+        <span class="stat-change positive">+5.8%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Charts Section -->
+  <section class="charts-section">
+    <div class="chart-container">
+      <div class="chart-header">
+        <h2 class="chart-title">Ventas del Mes</h2>
+        <div class="chart-filters">
+          <button class="filter-btn active" (click)="setTimeFilter('7D')">7D</button>
+          <button class="filter-btn" (click)="setTimeFilter('30D')">30D</button>
+          <button class="filter-btn" (click)="setTimeFilter('90D')">90D</button>
+        </div>
+      </div>
+      <div class="chart-placeholder">
+        <div class="chart-bars">
+          <div class="bar" style="height: 60%" title="Lunes - $8,500"></div>
+          <div class="bar" style="height: 80%" title="Martes - $12,300"></div>
+          <div class="bar" style="height: 45%" title="Miércoles - $6,800"></div>
+          <div class="bar" style="height: 90%" title="Jueves - $15,200"></div>
+          <div class="bar" style="height: 70%" title="Viernes - $11,400"></div>
+          <div class="bar" style="height: 85%" title="Sábado - $13,600"></div>
+          <div class="bar" style="height: 55%" title="Domingo - $9,200"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <div class="chart-header">
+        <h2 class="chart-title">Distribución por Categorías</h2>
+      </div>
+      <div class="pie-chart-placeholder">
+        <div class="pie-chart"></div>
+        <div class="pie-legend">
+          <div class="legend-item">
+            <span class="legend-color" style="background: #6366f1"></span>
+            <span>Electrónicos (35%)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #8b5cf6"></span>
+            <span>Ropa (28%)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #06b6d4"></span>
+            <span>Hogar (22%)</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color" style="background: #10b981"></span>
+            <span>Otros (15%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions">
+    <div class="actions-container">
+      <button class="action-btn" (click)="manageUsers()">
+        <span class="action-icon">👥</span>
+        <span class="action-text">Gestionar Usuarios</span>
+      </button>
+      
+      <button class="action-btn" (click)="manageProducts()">
+        <span class="action-icon">📦</span>
+        <span class="action-text">Gestionar Productos</span>
+      </button>
+      
+      <button class="action-btn" (click)="exportData()">
+        <span class="action-icon">📊</span>
+        <span class="action-text">Exportar Reportes</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Recent Activity -->
+  <section class="activity-section">
+    <div class="activity-header">
+      <h2 class="section-title">Actividad Reciente</h2>
+      <div class="activity-summary">
+        <span class="summary-item">
+          <strong>{{recentOrdersCount}}</strong> pedidos recientes
+        </span>
+        <span class="summary-item">
+          <strong>{{pendingOrdersCount}}</strong> pendientes
+        </span>
+        <button class="view-all-btn" (click)="viewAllActivities()">Ver Todo</button>
+      </div>
+    </div>
+    
+    <div class="activity-table">
+      <!-- Desktop Table View -->
+      <table class="data-table desktop-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Producto</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of recentActivity">
+            <td>
+              <div class="customer-info">
+                <img [src]="activity.customerAvatar" [alt]="activity.customerName" class="customer-avatar">
+                <span>{{activity.customerName}}</span>
+              </div>
+            </td>
+            <td>{{activity.product}}</td>
+            <td>{{activity.date | date:'short'}}</td>
+            <td>
+              <span class="status-badge" [ngClass]="activity.status">
+                {{activity.status}}
+              </span>
+            </td>
+            <td class="amount">{{activity.amount | currency:'USD':'symbol':'1.2-2'}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile Cards View -->
+      <div class="mobile-cards">
+        <div class="activity-card" *ngFor="let activity of recentActivity">
+          <div class="card-header">
+            <div class="customer-info">
+              <img [src]="activity.customerAvatar" [alt]="activity.customerName" class="customer-avatar">
+              <div class="customer-details">
+                <span class="customer-name">{{activity.customerName}}</span>
+                <span class="product-name">{{activity.product}}</span>
+              </div>
+            </div>
+            <span class="status-badge" [ngClass]="activity.status">
+              {{activity.status}}
+            </span>
+          </div>
+          <div class="card-footer">
+            <span class="activity-date">{{activity.date | date:'short'}}</span>
+            <span class="activity-amount">{{activity.amount | currency:'USD':'symbol':'1.2-2'}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>

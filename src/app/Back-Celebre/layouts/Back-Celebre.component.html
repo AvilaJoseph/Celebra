@@ -1,35 +1,42 @@
- <div class="app-layout">
-      <!-- Header -->
-      <app-header 
-        [title]="'Back Celebre'"
-        [userName]="currentUser.name"
-        [userAvatar]="currentUser.avatar"
-        [notificationCount]="notificationCount"
-        [navLinks]="getNavLinks()"
-        (mobileMenuToggle)="toggleSidebar()"
-        (profileClick)="goToProfile()"
-        (notificationClick)="onNotificationClick()">
-      </app-header>
+<!-- Back-Celebre.component.html -->
+<div class="app-layout">
+  <!-- Header -->
+  <app-header 
+    [title]="'Back Celebre'"
+    [userName]="currentUser.name"
+    [userAvatar]="currentUser.avatar"
+    [notificationCount]="notificationCount"
+    [navLinks]="getNavLinks()"
+    (mobileMenuToggle)="toggleSidebar()"
+    (profileClick)="goToProfile()"
+    (notificationClick)="onNotificationClick()">
+  </app-header>
 
-      <!-- Layout con sidebar -->
-      <div class="content-layout">
-        <app-sidebar 
-          [isOpen]="sidebarOpen"
-          [sections]="getSidebarSections()"
-          (menuItemSelected)="navigate($event)"
-          (sidebarClosed)="closeSidebar()">
-        </app-sidebar>
+  <!-- Layout con sidebar -->
+  <div class="content-layout">
+    <app-sidebar 
+      [isOpen]="sidebarOpen"
+      [sections]="getSidebarSections()"
+      (menuItemSelected)="navigate($event)"
+      (sidebarClosed)="closeSidebar()">
+    </app-sidebar>
 
-        <!-- Contenido principal -->
-        <main class="main-content">
-          <router-outlet></router-outlet>
-        </main>
-      </div>
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+      
+      <!-- Debug button para testing -->
+      <button (click)="openUploadModal()" 
+              style="position: fixed; bottom: 20px; right: 20px; z-index: 999; background: #6366f1; color: white; border: none; padding: 12px; border-radius: 50%; cursor: pointer;">
+        📷
+      </button>
+    </main>
+  </div>
 
-      <!-- Upload Modal -->
-      <app-upload 
-        [isOpen]="uploadModalOpen"
-        (modalClosed)="closeUploadModal()"
-        (filesUploaded)="onFilesUploaded($event)">
-      </app-upload>
-    </div>
+  <!-- Upload Modal - ASEGURAR QUE ESTÉ AQUÍ -->
+  <app-upload 
+    [isOpen]="uploadModalOpen"
+    (modalClosed)="closeUploadModal()"
+    (filesUploaded)="onFilesUploaded($event)">
+  </app-upload>
+</div>
