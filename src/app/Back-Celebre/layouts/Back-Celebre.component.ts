@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router } from '@angular/router';
-import { HeaderComponent } from '../Components/Base/Header/Header.component';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 import { SidebarComponent } from '../Components/Base/Sidebar/Sidebar.component';
 import { UploadModalComponent } from '../Components/Base/Upload/Upload.component';
 

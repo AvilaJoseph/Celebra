@@ -1,0 +1,147 @@
+<div class="navbar-container">
+    <nav class="navbar" [class.menu-open]="showMobileMenu">
+      <div class="navbar-brand">
+        <img src="celebre.png" alt="Logo" class="logo" />
+      </div>
+      
+      <!-- Desktop Menu -->
+      <ul class="navbar-menu desktop-menu">
+        <li 
+            class="menu-item"
+            (mouseenter)="showHomeModal = true" 
+            (mouseleave)="showHomeModal = false"
+        >
+            <a routerLink="/home">Home</a>
+            <img class="down-iconos" src="icons/down-arrow.svg" alt="">
+        
+            <!-- Modal tipo dropdown -->
+            <div 
+            class="modal-hover"
+            [ngClass]="{ 'visible': showHomeModal, 'hidden': !showHomeModal }"
+            >
+            <ul class="dropdown-list">
+                <li><a routerLink="/home/discover">Descubrir fotos</a></li>
+                <li><a routerLink="/home/trending">Lo más visitado</a></li>
+                <li><a routerLink="/home/challenges">Retos</a></li>
+                <li><a routerLink="/home/videos">Videos gratuitos</a></li>
+                <li><a routerLink="/home/blog">Blog de Pexels</a></li>
+            </ul>
+            </div>
+        </li>      
+        <li><a routerLink="/about">About</a></li>
+        <li 
+            class="menu-item"
+            (mouseenter)="showSettingsModal = true"
+            (mouseleave)="showSettingsModal = false"
+        >
+            <a class="centrar-icono">...</a>
+        
+            <div 
+            class="modal-hover modal-settings"
+            [ngClass]="{ 'visible': showSettingsModal, 'hidden': !showSettingsModal }"
+            >
+            <ul class="settings-list">
+                <li><a routerLink="/login">Iniciar sesión</a></li>
+                <li><a routerLink="/api">API de imagen y vídeo</a></li>
+                <li><a routerLink="/apps">Aplicaciones y complementos</a></li>
+                <li><a routerLink="/support">Centro de ayuda</a></li>
+                <li><a routerLink="/report">Denunciar contenido</a></li>
+                <li><a routerLink="/contributors">Colaboradores</a></li>
+                <li><a routerLink="/terms">Impressum y Condiciones</a></li>
+            </ul>
+        
+            <hr class="divider" />
+        
+            <div class="lang-option">
+                <img src="icons/spain-flag.svg" alt="Idioma" class="icon-flag">
+                <span>Cambiar idioma</span>
+            </div>
+        
+            <hr class="divider" />
+        
+            <div class="social-icons">
+                <img src="icons/instagram.svg" alt="Instagram">
+                <img src="icons/facebook.svg" alt="Facebook">
+                <img src="icons/pinterest.svg" alt="Pinterest">
+                <img src="icons/youtube.svg" alt="YouTube">
+                <img src="icons/tiktok.svg" alt="TikTok">
+            </div>
+            </div>
+        </li>
+        <li class="contact-button"><a class="button" routerLink="/contact">Login</a></li>
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+        <span class="hamburger-line" [class.active]="showMobileMenu"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" [class.active]="showMobileMenu" (click)="closeMobileMenu()">
+      <div class="mobile-menu" (click)="$event.stopPropagation()">
+        <div class="mobile-menu-header">
+          <img src="celebre.png" alt="Logo" class="mobile-logo" />
+        </div>
+        
+        <ul class="mobile-menu-list">
+          <li class="mobile-menu-item">
+            <div class="mobile-menu-link" (click)="toggleHomeSubmenu()">
+              <span>Home</span>
+              <img class="mobile-down-icon" [class.rotated]="showHomeSubmenu" src="icons/down-arrow.svg" alt="">
+            </div>
+            <ul class="mobile-submenu" [class.open]="showHomeSubmenu">
+              <li><a routerLink="/home/discover" (click)="closeMobileMenu()">Descubrir fotos</a></li>
+              <li><a routerLink="/home/trending" (click)="closeMobileMenu()">Lo más visitado</a></li>
+              <li><a routerLink="/home/challenges" (click)="closeMobileMenu()">Retos</a></li>
+              <li><a routerLink="/home/videos" (click)="closeMobileMenu()">Videos gratuitos</a></li>
+              <li><a routerLink="/home/blog" (click)="closeMobileMenu()">Blog de Pexels</a></li>
+            </ul>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <a routerLink="/about" (click)="closeMobileMenu()">About</a>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <div class="mobile-menu-link" (click)="toggleSettingsSubmenu()">
+              <span>Configuración</span>
+              <img class="mobile-down-icon" [class.rotated]="showSettingsSubmenu" src="icons/down-arrow.svg" alt="">
+            </div>
+            <ul class="mobile-submenu" [class.open]="showSettingsSubmenu">
+              <li><a routerLink="/login" (click)="closeMobileMenu()">Iniciar sesión</a></li>
+              <li><a routerLink="/api" (click)="closeMobileMenu()">API de imagen y vídeo</a></li>
+              <li><a routerLink="/apps" (click)="closeMobileMenu()">Aplicaciones y complementos</a></li>
+              <li><a routerLink="/support" (click)="closeMobileMenu()">Centro de ayuda</a></li>
+              <li><a routerLink="/report" (click)="closeMobileMenu()">Denunciar contenido</a></li>
+              <li><a routerLink="/contributors" (click)="closeMobileMenu()">Colaboradores</a></li>
+              <li><a routerLink="/terms" (click)="closeMobileMenu()">Impressum y Condiciones</a></li>
+            </ul>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <div class="mobile-lang-section">
+              <div class="mobile-lang-option">
+                <img src="icons/spain-flag.svg" alt="Idioma" class="icon-flag">
+                <span>Cambiar idioma</span>
+              </div>
+              
+              <div class="mobile-social-icons">
+                <img src="icons/instagram.svg" alt="Instagram">
+                <img src="icons/facebook.svg" alt="Facebook">
+                <img src="icons/pinterest.svg" alt="Pinterest">
+                <img src="icons/youtube.svg" alt="YouTube">
+                <img src="icons/tiktok.svg" alt="TikTok">
+              </div>
+            </div>
+          </li>
+          
+          <li class="mobile-menu-item">
+            <a class="mobile-login-btn" routerLink="/contact" (click)="closeMobileMenu()">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>

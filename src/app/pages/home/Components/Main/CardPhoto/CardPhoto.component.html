@@ -1,0 +1,56 @@
+<!-- CardPhoto.component.html -->
+<div 
+  class="item"
+  [ngClass]="itemSize"
+  [ngStyle]="{'background-color': backgroundColor}"
+  (mouseenter)="showHoverElements = true"
+  (mouseleave)="showHoverElements = false"
+  (click)="openModal()"
+>
+  <!-- Overlay con elementos que aparecen en hover -->
+  <div class="hover-elements-container" *ngIf="showHoverElements">
+    <!-- Contenedor superior con las imágenes -->
+    <div class="top-right-icons">
+      <div class="icon-wrapper icon-wrapper-1">
+        <img class="icon-bookmark" src="icons/bookmark.svg" alt="icono1">
+      </div>
+      <div class="icon-wrapper icon-wrapper-2">
+        <img class="icon icon-heart" src="icons/hearth.svg" alt="icono2">
+      </div>
+    </div>
+    
+    <!-- Usuario con foto y nombre -->
+    <div class="user-info">
+      <div class="user-avatar">
+        <img src="cards/perfil.jpg" alt="Foto de perfil">
+      </div>
+      <div class="user-name">Alin Luna</div>
+    </div>
+    
+    <!-- Contenedor inferior con SVG y botón -->
+    <div class="bottom-bar">
+      <div>
+        <!-- <img src="icons/down-arrow.svg" style="width: 100px;" alt=""> -->
+      </div>
+      <div class="btn-container">
+        <button class="btn-download" (click)="openModal()">
+          <div class="icon-download">
+            <img class="svg-icon icon-download-svg" src="icons/download.svg" alt="">
+          </div>
+          Ver más
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Contenido central (siempre visible) -->
+  <div class="item-content">
+    {{ content }}
+  </div>
+</div>
+
+<app-modal-media
+  [showModal]="showModal"
+  [item]="modalItem"
+  (closeModal)="closeModal()"
+></app-modal-media>

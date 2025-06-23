@@ -1,22 +1,21 @@
+// src/app/app.routes.ts - CORREGIDO
 import { Routes } from '@angular/router';
-import { LoginComponent } from './Back-Celebre/Components/Login/Login.component';
-import { RegisterComponent } from './Back-Celebre/Components/Register/Register.component';
 
 export const routes: Routes = [
-    // Página principal (sin layout)
+    // Página principal
     {
         path: '',
-        loadComponent: () => import('./HomeCelebra/HomeCelebra.component').then(m => m.HomeCelebraComponent)
+        loadComponent: () => import('./pages/home/HomeCelebra.component').then(m => m.HomeCelebraComponent)
     },
     
-    // Rutas de autenticación (sin layout)
+    // Rutas de autenticación - CORREGIR ESTAS RUTAS
     { 
         path: 'login', 
-        component: LoginComponent 
+        loadComponent: () => import('./features/auth/components/login/Login.component').then(m => m.LoginComponent)
     },
     { 
         path: 'register', 
-        component: RegisterComponent 
+        loadComponent: () => import('./Back-Celebre/Components/Register/Register.component').then(m => m.RegisterComponent)
     },
     
     // Layout principal con rutas protegidas
@@ -39,7 +38,7 @@ export const routes: Routes = [
                 path: 'profile',
                 loadComponent: () => import('./Back-Celebre/Components/UserProfile/UserProfile.component').then(c => c.UserProfileComponent)
             },
-            // Fotos (usando UserDashboard como placeholder)
+            // Fotos
             {
                 path: 'photos',
                 loadComponent: () => import('./Back-Celebre/Components/UserDashboard/UserDashboard.component').then(c => c.UserDashboardComponent)
@@ -74,7 +73,7 @@ export const routes: Routes = [
                     }
                 ]
             },
-            // Settings apunta a UserProfile
+            // Settings
             {
                 path: 'settings',
                 loadComponent: () => import('./Back-Celebre/Components/UserProfile/UserProfile.component').then(c => c.UserProfileComponent)

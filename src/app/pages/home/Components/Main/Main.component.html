@@ -1,0 +1,34 @@
+<main class="main">
+    <div class="list-button" #buttonContainer>
+        <li>
+            <button 
+                [class]="isActive('Inicio') ? 'button-active' : 'button'"
+                (click)="onButtonClick('Inicio', $event)">
+                Inicio
+            </button>
+        </li>
+        <li>
+            <button 
+                [class]="isActive('Vídeos') ? 'button-active' : 'button'"
+                (click)="onButtonClick('Vídeos', $event)">
+                Vídeos
+            </button>
+        </li>
+        <li>
+            <button 
+                [class]="isActive('Lo más visitado') ? 'button-active' : 'button'"
+                (click)="onButtonClick('Lo más visitado', $event)">
+                Lo más visitado
+            </button>
+        </li>
+        <li>
+            <button 
+                [class]="isActive('Retos') ? 'button-active' : 'button'"
+                (click)="onButtonClick('Retos', $event)">
+                Retos
+            </button>
+        </li>
+    </div>
+    <Main-Celebre-FiltrerPhoto></Main-Celebre-FiltrerPhoto>
+    <Main-Celebre-ListPhoto></Main-Celebre-ListPhoto>
+</main>

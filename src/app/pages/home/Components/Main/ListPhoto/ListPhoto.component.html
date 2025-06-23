@@ -1,0 +1,17 @@
+<!-- ListPhoto.component.html -->
+<div class="grid-photo">
+  <div class="masonry">
+    <div 
+      *ngFor="let card of cards" 
+      class="card-container"
+      [ngStyle]="{'grid-row': card.gridRow}"
+    >
+      <app-card-photo
+        [itemNumber]="card.id"
+        [itemSize]="card.size"
+        [backgroundColor]="card.backgroundColor"
+        [content]="card.content"
+      ></app-card-photo>
+    </div>
+  </div>
+</div>
