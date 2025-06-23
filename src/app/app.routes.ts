@@ -1,4 +1,3 @@
-// src/app/app.routes.ts - CORREGIDO
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -8,14 +7,14 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/HomeCelebra.component').then(m => m.HomeCelebraComponent)
     },
     
-    // Rutas de autenticación - CORREGIR ESTAS RUTAS
+    // Rutas de autenticación - RUTAS CORREGIDAS PARA TU ESTRUCTURA ACTUAL
     { 
         path: 'login', 
-        loadComponent: () => import('./features/auth/components/login/Login.component').then(m => m.LoginComponent)
+        loadComponent: () => import('./../app/features/auth/components/login/Login.component').then(m => m.LoginComponent)
     },
     { 
         path: 'register', 
-        loadComponent: () => import('./Back-Celebre/Components/Register/Register.component').then(m => m.RegisterComponent)
+        loadComponent: () => import('./features/auth/components/register/Register.component').then(m => m.RegisterComponent)
     },
     
     // Layout principal con rutas protegidas

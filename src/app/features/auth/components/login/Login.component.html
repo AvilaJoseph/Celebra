@@ -1,39 +1,44 @@
 <div class="container">
   <div class="login-container">
     <div class="header">
-      <h2>Agent Login</h2>
-      <p>Hey, Enter your details to get sign in<br>to your account</p>
+      <h2>Welcome Back</h2>
+      <p>Sign in to your account to continue</p>
     </div>
-    <form class="form-container" (ngSubmit)="onSubmit()">
+
+    @if (errorMessage()) {
+    <div class="error-message">
+      {{ errorMessage() }}
+    </div>
+    }
+
+    <form class="form-container" (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="input-group">
-        <input class="login-input"
-          type="email" 
-          [(ngModel)]="email"
-          name="email"
-          placeholder="Enter Email / Phone No"
-          required>
+        <input class="login-input" type="email" [value]="email()" (input)="updateEmail($any($event.target).value)"
+          name="email" placeholder="Email Address" [disabled]="isLoading()" required>
       </div>
-      
+
       <div class="input-group password-group">
-        <input class="login-input"
-          [type]="showPassword ? 'text' : 'password'"
-          [(ngModel)]="password"
-          name="password"
-          placeholder="Password"
-          required>
-        <button type="button" class="toggle-password" (click)="togglePassword()">
-          {{ showPassword ? 'Show' : 'Hide' }}
+        <input class="login-input" [type]="showPassword() ? 'text' : 'password'" [value]="password()"
+          (input)="updatePassword($any($event.target).value)" name="password" placeholder="Password"
+          [disabled]="isLoading()" required>
+        <button type="button" class="toggle-password" (click)="togglePassword()" [disabled]="isLoading()">
+          {{ showPassword() ? 'Hide' : 'Show' }}
         </button>
       </div>
-      
-      <div class="forgot-password">
-        <a href="#" (click)="onForgotPassword($event)">Having trouble to sign in?</a>
-      </div>
-      
-      <button type="submit" class="signin-button">Sign in</button>
-      
+
+      <button type="submit" class="signin-button" [disabled]="isLoading() || !loginForm.form.valid"
+        [class.loading]="isLoading()">
+        @if (isLoading()) {
+        <span class="loading-spinner"></span>
+        Signing in...
+        } @else {
+        Sign In
+        }
+      </button>
+
       <div class="signup-link">
-        Don't have an account? <a href="#" (click)="onRequestAccount($event)">Request Now</a>
+        Don't have an account?
+        <a routerLink="/register">Create one here</a>
       </div>
     </form>
   </div>
