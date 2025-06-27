@@ -10,7 +10,7 @@ export const routes: Routes = [
     // Rutas de autenticación - RUTAS CORREGIDAS PARA TU ESTRUCTURA ACTUAL
     { 
         path: 'login', 
-        loadComponent: () => import('./../app/features/auth/components/login/Login.component').then(m => m.LoginComponent)
+        loadComponent: () => import('./features/auth/components/login/Login.component').then(m => m.LoginComponent)
     },
     { 
         path: 'register', 
